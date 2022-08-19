@@ -1,6 +1,5 @@
-package com.website.rednation.repository;
+package com.website.rednation.user;
 
-import com.website.rednation.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

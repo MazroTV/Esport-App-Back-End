@@ -1,4 +1,4 @@
-package com.website.rednation.models;
+package com.website.rednation.user;
 import javax.persistence.*;
 
 @Entity

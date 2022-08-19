@@ -1,10 +1,6 @@
-package com.website.rednation.controllers;
+package com.website.rednation.user;
 
-import com.website.rednation.expections.ResourceNotFoundException;
-import com.website.rednation.models.User;
-import com.website.rednation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,19 +27,19 @@ public class UserController {
         return userRepository.save(user);
     }
 
-    @GetMapping("/users/{username}")
+    @GetMapping("/users/get/{username}")
     public ResponseEntity < User > getUserByUsername(@PathVariable String username) {
 
             User user = userRepository.findById(username)
-                    .orElseThrow(() -> new ResourceNotFoundException("User not exist with username :" + username));
+                    .orElseThrow(() -> new UserNotFoundException("User not exist with username :" + username));
             return ResponseEntity.ok(user);
     }
 
 
-    @PutMapping("/users/{username}")
+    @PutMapping("/users/update/{username}")
     public ResponseEntity < User > updateUser(@PathVariable String username, @RequestBody User userDetails) {
         User user = userRepository.findById(username)
-                .orElseThrow(() -> new ResourceNotFoundException("User not exist with username :" + username));
+                .orElseThrow(() -> new UserNotFoundException("User not exist with username :" + username));
 
         user.setUsername(userDetails.getUsername());
         user.setEmail(userDetails.getEmail());
@@ -53,10 +49,10 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    @DeleteMapping("/users/{username}")
+    @DeleteMapping("/users/delete/{username}")
     public ResponseEntity <Map< String, Boolean >> deleteUser(@PathVariable String username) {
         User user = userRepository.findById(username)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + username));
+                .orElseThrow(() -> new UserNotFoundException("Employee not exist with id :" + username));
 
         userRepository.delete(user);
         Map < String, Boolean > response = new HashMap< >();
