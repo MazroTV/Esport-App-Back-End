@@ -8,21 +8,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/users")
+    @GetMapping("/users/all")
     public List <User> getAllUsers() {
         return userRepository.findAll();
 
     }
 
-    @PostMapping("/users")
+    @PostMapping("/users/add")
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }

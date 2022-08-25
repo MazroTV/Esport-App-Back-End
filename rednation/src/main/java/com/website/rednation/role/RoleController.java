@@ -1,11 +1,8 @@
 package com.website.rednation.role;
 
-import com.website.rednation.user.User;
-import com.website.rednation.user.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,12 +16,12 @@ public class RoleController {
     @Autowired
     private RoleRepository roleRepository;
 
-    @GetMapping("/roles")
+    @GetMapping("/roles/all")
     public List <Role> getAllRoles() {
         return roleRepository.findAll();
     }
 
-    @PostMapping("/roles")
+    @PostMapping("/roles/add")
     public Role createRole(@RequestBody Role role) {
         return roleRepository.save(role);
     }

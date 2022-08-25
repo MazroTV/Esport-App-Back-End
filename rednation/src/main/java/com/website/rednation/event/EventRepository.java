@@ -1,10 +1,10 @@
-package com.website.rednation.role;
+package com.website.rednation.event;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Integer> {
+public interface EventRepository extends JpaRepository<Event, Integer> {
 
 }
